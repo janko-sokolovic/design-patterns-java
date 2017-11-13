@@ -5,6 +5,8 @@ import factory.CarFactory;
 import observer.AppNotificationObserver;
 import observer.Blog;
 import observer.EmailObserver;
+import singleton.EagerInitializedSingleton;
+import singleton.LazyInitializedSingleton;
 import strategy.Context;
 import strategy.SendEmailMessageStrategy;
 import strategy.SendLetterMessageStrategy;
@@ -23,8 +25,9 @@ public class Main {
         testObserver();
 
         testBuilder();
-    }
 
+        testSingletons();
+    }
 
     private static void testFactory() {
         out.println("---- Testing Factory Pattern ----");
@@ -64,7 +67,6 @@ public class Main {
         out.println();
     }
 
-
     private static void testBuilder() {
         out.println("---- Testing Builder Pattern ----");
         HouseBuilder houseBuilder = new HouseBuilder("red-roof", "glass-windows");
@@ -74,6 +76,22 @@ public class Main {
                 .build();
 
         out.println("House created -> " + house);
+        out.println();
     }
+
+    private static void testSingletons() {
+        out.println("---- Testing Singleton Pattern ----");
+
+        LazyInitializedSingleton singleton = LazyInitializedSingleton.getInstance();
+        singleton.setName("Happy Singleton");
+
+        out.println("Singleton name: " + singleton.getName());
+        LazyInitializedSingleton newSingleton = LazyInitializedSingleton.getInstance();
+
+        out.println("Still the same name: " + newSingleton.getName());
+
+        out.println();
+    }
+
 
 }
