@@ -1,5 +1,6 @@
 import factory.Car;
 import factory.CarFactory;
+import observer.AppNotificationObserver;
 import observer.Blog;
 import observer.EmailObserver;
 import strategy.Context;
@@ -45,7 +46,7 @@ public class Main {
         Blog blog = new Blog();
 
         new EmailObserver(blog);
-        new EmailObserver(blog);
+        new AppNotificationObserver(blog);
 
         blog.addPost("New interesting topic");
 

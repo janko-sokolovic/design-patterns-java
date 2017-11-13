@@ -9,6 +9,6 @@ public class EmailObserver extends Observer {
 
     @Override
     public void update() {
-        System.out.println("New blog post arrived!");
+        System.out.println("New blog post arrived via email! -> " + blog.getLatest());
     }
 }

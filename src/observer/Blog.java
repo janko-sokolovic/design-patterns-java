@@ -10,7 +10,7 @@ public class Blog {
     private List<Observer> observers = new ArrayList<>();
     private List<String> posts = new ArrayList<>();
 
-    public void addPost(String newPost){
+    public void addPost(String newPost) {
         posts.add(newPost);
         notifyAllObservers();
     }
@@ -25,5 +25,13 @@ public class Blog {
 
     private void notifyAllObservers() {
         observers.forEach(Observer::update);
+    }
+
+    String getLatest() {
+        if (!posts.isEmpty()) {
+
+            return posts.get(posts.size() - 1);
+        }
+        return null;
     }
 }
