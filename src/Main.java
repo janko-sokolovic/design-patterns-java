@@ -1,3 +1,7 @@
+import abstractfactory.Burger;
+import abstractfactory.FastFoodAbstractFactory;
+import abstractfactory.FastFoodFactoryProvider;
+import abstractfactory.Pizza;
 import builder.House;
 import builder.House.HouseBuilder;
 import factory.Car;
@@ -20,6 +24,8 @@ public class Main {
 
         testFactory();
 
+        testAbstractFactory();
+
         testStrategy();
 
         testObserver();
@@ -29,6 +35,8 @@ public class Main {
         testSingletons();
     }
 
+
+
     private static void testFactory() {
         out.println("---- Testing Factory Pattern ----");
         Car electricCar = CarFactory.create("electric");
@@ -36,6 +44,21 @@ public class Main {
 
         out.println("Electric car: " + electricCar);
         out.println("Electric car: " + iceCar);
+        out.println();
+    }
+
+    private static void testAbstractFactory() {
+        out.println("---- Testing Abstract Factory Pattern ----");
+
+        FastFoodAbstractFactory burgerFactory = FastFoodFactoryProvider.getFactory("BURGER");
+        Burger beefBurger = burgerFactory.getBurger("BEEF");
+
+        beefBurger.eatBurger();
+
+        FastFoodAbstractFactory pizzaFactory = FastFoodFactoryProvider.getFactory("PIZZA");
+        Pizza pepperoniPizza = pizzaFactory.getPizza("PEPPERONI");
+        pepperoniPizza.eatPizza();
+
         out.println();
     }
 
