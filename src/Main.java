@@ -2,6 +2,7 @@ import abstractfactory.Burger;
 import abstractfactory.FastFoodAbstractFactory;
 import abstractfactory.FastFoodFactoryProvider;
 import abstractfactory.Pizza;
+import bridge.*;
 import builder.House;
 import builder.House.HouseBuilder;
 import factory.Car;
@@ -37,9 +38,21 @@ public class Main {
         testSingletons();
 
         testPrototype();
+
+        testBridge();
     }
 
+    private static void testBridge() {
+        out.println("---- Testing Bridge Pattern ----");
 
+        Computer laptop = new Laptop(new Linux());
+        laptop.turnOn();
+
+        Computer desktop = new Desktop(new Windows());
+        desktop.turnOn();
+
+        out.println();
+    }
 
     private static void testFactory() {
         out.println("---- Testing Factory Pattern ----");
