@@ -9,6 +9,8 @@ import factory.CarFactory;
 import observer.AppNotificationObserver;
 import observer.Blog;
 import observer.EmailObserver;
+import prototype.Icecream;
+import prototype.Prototype;
 import singleton.EagerInitializedSingleton;
 import singleton.LazyInitializedSingleton;
 import strategy.Context;
@@ -33,6 +35,8 @@ public class Main {
         testBuilder();
 
         testSingletons();
+
+        testPrototype();
     }
 
 
@@ -116,5 +120,16 @@ public class Main {
         out.println();
     }
 
+    private static void testPrototype() {
+        out.println("---- Testing Prototype Pattern ----");
 
+        Icecream icecream = new Icecream( 2.2f, "Strawberry");
+        Icecream clone = (Icecream) icecream.getClone();
+
+        icecream.setPrice(1.2f);
+
+        System.out.println("Clone's price stayed unchanged -> " + clone.getPrice());
+
+        out.println();
+    }
 }
