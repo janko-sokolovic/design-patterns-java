@@ -2,15 +2,15 @@ package com.jasofalcon.designpatterns.command;
 
 public class TV {
 
-    public void turnOn(){
+    void turnOn(){
         System.out.println("Turning TV on...");
     }
 
-    public void turnOff(){
+    void turnOff(){
         System.out.println("Turning TV off...");
     }
 
-    public void changeChannel(){
+    void changeChannel(){
         System.out.println("Changing channel...");
     }
 }
