@@ -1,7 +1,7 @@
 package com.jasofalcon.designpatterns.command;
 
 public class ChangeChannelCommand implements Command {
-    TV tv;
+    private TV tv;
 
     public ChangeChannelCommand(TV tv) {
         this.tv = tv;

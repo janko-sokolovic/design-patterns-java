@@ -1,7 +1,7 @@
 package com.jasofalcon.designpatterns.command;
 
 public class TurnOnCommand implements Command {
-    TV tv;
+    private TV tv;
 
     public TurnOnCommand(TV tv) {
         this.tv = tv;
