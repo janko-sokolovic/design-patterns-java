@@ -11,6 +11,7 @@ import com.jasofalcon.designpatterns.builder.House;
 import com.jasofalcon.designpatterns.decorator.AmazonParrot;
 import com.jasofalcon.designpatterns.decorator.Bird;
 import com.jasofalcon.designpatterns.decorator.Parrot;
+import com.jasofalcon.designpatterns.facade.Hero;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
 import com.jasofalcon.designpatterns.observer.AppNotificationObserver;
@@ -44,6 +45,18 @@ public class Main {
         testBridge();
 
         testDecorator();
+        
+        testFacade();
+    }
+
+    private static void testFacade() {
+        out.println("---- Testing Facade Pattern ----");
+
+        Hero hero = new Hero();
+
+        hero.attack();
+
+        out.println();
     }
 
     private static void testDecorator() {
@@ -86,11 +99,13 @@ public class Main {
         out.println("---- Testing Abstract Factory Pattern ----");
 
         FastFoodAbstractFactory burgerFactory = FastFoodFactoryProvider.getFactory("BURGER");
+        assert burgerFactory != null;
         Burger beefBurger = burgerFactory.getBurger("BEEF");
 
         beefBurger.eatBurger();
 
         FastFoodAbstractFactory pizzaFactory = FastFoodFactoryProvider.getFactory("PIZZA");
+        assert pizzaFactory != null;
         Pizza pepperoniPizza = pizzaFactory.getPizza("PEPPERONI");
         pepperoniPizza.eatPizza();
 
