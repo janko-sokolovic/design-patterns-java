@@ -8,6 +8,9 @@ import com.jasofalcon.designpatterns.abstractfactory.FastFoodFactoryProvider;
 import com.jasofalcon.designpatterns.abstractfactory.Pizza;
 import com.jasofalcon.designpatterns.bridge.*;
 import com.jasofalcon.designpatterns.builder.House;
+import com.jasofalcon.designpatterns.decorator.AmazonParrot;
+import com.jasofalcon.designpatterns.decorator.Bird;
+import com.jasofalcon.designpatterns.decorator.Parrot;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
 import com.jasofalcon.designpatterns.observer.AppNotificationObserver;
@@ -39,6 +42,22 @@ public class Main {
         testPrototype();
 
         testBridge();
+
+        testDecorator();
+    }
+
+    private static void testDecorator() {
+        out.println("---- Testing Decorator Pattern ----");
+
+        Bird regularBird = new Parrot();
+
+        regularBird.fly();
+
+        Bird amazonBird = new AmazonParrot(new Parrot());
+
+        amazonBird.fly();
+
+        out.println();
     }
 
     private static void testBridge() {
