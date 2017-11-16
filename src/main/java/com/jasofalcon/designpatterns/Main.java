@@ -8,6 +8,7 @@ import com.jasofalcon.designpatterns.abstractfactory.FastFoodFactoryProvider;
 import com.jasofalcon.designpatterns.abstractfactory.Pizza;
 import com.jasofalcon.designpatterns.bridge.*;
 import com.jasofalcon.designpatterns.builder.House;
+import com.jasofalcon.designpatterns.command.*;
 import com.jasofalcon.designpatterns.decorator.AmazonParrot;
 import com.jasofalcon.designpatterns.decorator.Bird;
 import com.jasofalcon.designpatterns.decorator.Parrot;
@@ -47,6 +48,32 @@ public class Main {
         testDecorator();
         
         testFacade();
+        
+        testCommand();
+    }
+
+    private static void testCommand() {
+        out.println("---- Testing Command Pattern ----");
+
+        RemoteControl remote = new RemoteControl();
+
+        TV tv = new TV();
+
+        Command turnOn = new TurnOnCommand(tv);
+        Command turnOff = new TurnOffCommand(tv);
+        Command changeChannel = new ChangeChannelCommand(tv);
+
+        remote.setCommand(turnOn);
+        remote.applyCommand();
+
+        remote.setCommand(changeChannel);
+        remote.applyCommand();
+
+        remote.setCommand(turnOff);
+        remote.applyCommand();
+
+
+        out.println();
     }
 
     private static void testFacade() {
