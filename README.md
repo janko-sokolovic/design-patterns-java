@@ -7,7 +7,10 @@
 
 
 ## Run
-Run Main class to trigger all patterns
+`mvn clean package`
+`cd /target`
+`java -jar <name-of-jar>`
+
 
 ## License
 This project is licensed under the terms of the MIT license.
