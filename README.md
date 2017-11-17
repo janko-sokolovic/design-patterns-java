@@ -7,9 +7,11 @@
 
 
 ## Run
-`mvn clean package`
-`cd /target`
-`java -jar <name-of-jar>`
+`mvn clean package` <br />
+`cd /target` <br />
+`java -jar <name-of-jar>` <br />
+or<br />
+Run Main.java from your favorite IDE
 
 
 ## License
