@@ -15,6 +15,9 @@ import com.jasofalcon.designpatterns.decorator.Parrot;
 import com.jasofalcon.designpatterns.facade.Hero;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
+import com.jasofalcon.designpatterns.iterator.Iterator;
+import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
+import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
 import com.jasofalcon.designpatterns.observer.AppNotificationObserver;
 import com.jasofalcon.designpatterns.observer.Blog;
 import com.jasofalcon.designpatterns.observer.EmailObserver;
@@ -50,6 +53,23 @@ public class Main {
         testFacade();
         
         testCommand();
+
+        testIterator();
+    }
+
+    private static void testIterator() {
+        out.println("---- Testing Iterator Pattern ----");
+
+        NinjaTurtlesRepository tnmtRepository = new NinjaTurtlesRepository();
+
+        for(Iterator iterator = tnmtRepository.getIterator(); iterator.hasNext();){
+
+            NinjaTurtle turtle = (NinjaTurtle) iterator.next();
+
+            System.out.println(turtle.getName() + " of color " + turtle.getColor() + " attacks with " + turtle.getWeapon() + "!");
+        }
+
+        out.println();
     }
 
     private static void testCommand() {
