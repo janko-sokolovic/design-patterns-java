@@ -29,6 +29,10 @@ import com.jasofalcon.designpatterns.strategy.Context;
 import com.jasofalcon.designpatterns.strategy.SendEmailMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendLetterMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendMessageStrategy;
+import com.jasofalcon.designpatterns.visitor.Body;
+import com.jasofalcon.designpatterns.visitor.BodyPart;
+import com.jasofalcon.designpatterns.visitor.BodyPartVisitor;
+import com.jasofalcon.designpatterns.visitor.HealthInfoVisitor;
 
 public class Main {
 
@@ -59,6 +63,17 @@ public class Main {
         testIterator();
 
         testState();
+        
+        testVisitor();
+    }
+
+    private static void testVisitor() {
+        out.println("---- Testing Visitor Pattern ----");
+
+        BodyPart body = new Body();
+        body.accept(new HealthInfoVisitor());
+
+        out.println();
     }
 
     private static void testState() {
