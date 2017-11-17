@@ -17,7 +17,6 @@ public class NinjaTurtlesRepository implements Container {
         return new NinjaTurtleIterator();
     }
 
-
     private class NinjaTurtleIterator implements Iterator {
 
         int index;

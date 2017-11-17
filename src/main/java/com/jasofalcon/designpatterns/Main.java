@@ -23,6 +23,8 @@ import com.jasofalcon.designpatterns.observer.Blog;
 import com.jasofalcon.designpatterns.observer.EmailObserver;
 import com.jasofalcon.designpatterns.prototype.Icecream;
 import com.jasofalcon.designpatterns.singleton.LazyInitializedSingleton;
+import com.jasofalcon.designpatterns.state.PeacefulState;
+import com.jasofalcon.designpatterns.state.Woman;
 import com.jasofalcon.designpatterns.strategy.Context;
 import com.jasofalcon.designpatterns.strategy.SendEmailMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendLetterMessageStrategy;
@@ -55,6 +57,22 @@ public class Main {
         testCommand();
 
         testIterator();
+
+        testState();
+    }
+
+    private static void testState() {
+        out.println("---- Testing Iterator Pattern ----");
+
+        Woman woman = new Woman();
+
+        woman.buyHerCookies();
+        woman.observeState();
+
+        woman.pmsComing();
+        woman.observeState();
+
+        out.println();
     }
 
     private static void testIterator() {
