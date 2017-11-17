@@ -8,3 +8,7 @@ Written in Java
 ## Run
 Run Main class to trigger all patterns
 
+## License
+This project is licensed under the terms of the MIT license.
+
+
