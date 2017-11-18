@@ -15,6 +15,7 @@ import com.jasofalcon.designpatterns.decorator.Parrot;
 import com.jasofalcon.designpatterns.facade.Hero;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
+import com.jasofalcon.designpatterns.filter.*;
 import com.jasofalcon.designpatterns.iterator.Iterator;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
@@ -33,6 +34,10 @@ import com.jasofalcon.designpatterns.visitor.Body;
 import com.jasofalcon.designpatterns.visitor.BodyPart;
 import com.jasofalcon.designpatterns.visitor.BodyPartVisitor;
 import com.jasofalcon.designpatterns.visitor.HealthInfoVisitor;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -65,7 +70,10 @@ public class Main {
         testState();
         
         testVisitor();
+
+        testFilter();
     }
+
 
     private static void testVisitor() {
         out.println("---- Testing Visitor Pattern ----");
@@ -255,6 +263,36 @@ public class Main {
         icecream.setPrice(1.2f);
 
         System.out.println("Clone's price stayed unchanged -> " + clone.getPrice());
+
+        out.println();
+    }
+
+
+    private static void testFilter() {
+        out.println("---- Testing Filter Pattern ----");
+
+        List<Animal> animals = Arrays.asList(
+                new Animal("Lion","Carnivore","Vertebrate"),
+                new Animal("Jellyfish","Carnivore","Ivertebrate"),
+                new Animal("Horse","Herbivore","Vertebrate"),
+                new Animal("Spider","Carnivore","Ivertebrate"),
+                new Animal("Elephant","Herbivore","Vertebrate"),
+                new Animal("Snail","Herbivore","Ivertebrate")
+        );
+
+        Criteria carnivoreCriteria = new CarnivoreCriteria();
+        Criteria herbivoreCriteria = new HerbivoreCriteria();
+        Criteria vertebrateCriteria = new VertebrateCriteria();
+        Criteria carnivoreAndVertebrate = new AndCriteria(carnivoreCriteria, vertebrateCriteria);
+        Criteria orCriteria = new OrCriteria(herbivoreCriteria, vertebrateCriteria);
+
+        System.out.print("Herbivores: " );
+        System.out.print(herbivoreCriteria.meetCriteria(animals).stream().map(Animal::getName).collect(Collectors.joining(", ")));
+        System.out.println();
+
+        System.out.print("Vertebrate carnivors: " );
+        System.out.print(carnivoreAndVertebrate.meetCriteria(animals).stream().map(Animal::getName).collect(Collectors.joining(", ")));
+        System.out.println();
 
         out.println();
     }
