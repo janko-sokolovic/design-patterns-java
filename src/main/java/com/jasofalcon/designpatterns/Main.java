@@ -9,6 +9,7 @@ import com.jasofalcon.designpatterns.abstractfactory.Pizza;
 import com.jasofalcon.designpatterns.bridge.*;
 import com.jasofalcon.designpatterns.builder.House;
 import com.jasofalcon.designpatterns.command.*;
+import com.jasofalcon.designpatterns.composite.Employee;
 import com.jasofalcon.designpatterns.decorator.AmazonParrot;
 import com.jasofalcon.designpatterns.decorator.Bird;
 import com.jasofalcon.designpatterns.decorator.Parrot;
@@ -24,7 +25,6 @@ import com.jasofalcon.designpatterns.observer.Blog;
 import com.jasofalcon.designpatterns.observer.EmailObserver;
 import com.jasofalcon.designpatterns.prototype.Icecream;
 import com.jasofalcon.designpatterns.singleton.LazyInitializedSingleton;
-import com.jasofalcon.designpatterns.state.PeacefulState;
 import com.jasofalcon.designpatterns.state.Woman;
 import com.jasofalcon.designpatterns.strategy.Context;
 import com.jasofalcon.designpatterns.strategy.SendEmailMessageStrategy;
@@ -32,7 +32,6 @@ import com.jasofalcon.designpatterns.strategy.SendLetterMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendMessageStrategy;
 import com.jasofalcon.designpatterns.visitor.Body;
 import com.jasofalcon.designpatterns.visitor.BodyPart;
-import com.jasofalcon.designpatterns.visitor.BodyPartVisitor;
 import com.jasofalcon.designpatterns.visitor.HealthInfoVisitor;
 
 import java.util.Arrays;
@@ -72,8 +71,9 @@ public class Main {
         testVisitor();
 
         testFilter();
-    }
 
+        testComposite();
+    }
 
     private static void testVisitor() {
         out.println("---- Testing Visitor Pattern ----");
@@ -296,4 +296,20 @@ public class Main {
 
         out.println();
     }
+
+    private static void testComposite() {
+        out.println("---- Testing Composite Pattern ----");
+
+        Employee manager = new Employee("El hefe");
+        manager.hire(new Employee("Bob"));
+        manager.hire(new Employee("John"));
+
+        System.out.println(manager);
+
+        manager.getSubordinates().forEach(e -> System.out.println(e.toString()));
+
+        out.println();
+    }
+
+
 }
