@@ -17,6 +17,8 @@ import com.jasofalcon.designpatterns.facade.Hero;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
 import com.jasofalcon.designpatterns.filter.*;
+import com.jasofalcon.designpatterns.flyweight.GemFactory;
+import com.jasofalcon.designpatterns.flyweight.Jewelry;
 import com.jasofalcon.designpatterns.iterator.Iterator;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
@@ -59,20 +61,22 @@ public class Main {
         testBridge();
 
         testDecorator();
-        
+
         testFacade();
-        
+
         testCommand();
 
         testIterator();
 
         testState();
-        
+
         testVisitor();
 
         testFilter();
 
         testComposite();
+
+        testFlyweight();
     }
 
     private static void testVisitor() {
@@ -103,7 +107,7 @@ public class Main {
 
         NinjaTurtlesRepository tnmtRepository = new NinjaTurtlesRepository();
 
-        for(Iterator iterator = tnmtRepository.getIterator(); iterator.hasNext();){
+        for (Iterator iterator = tnmtRepository.getIterator(); iterator.hasNext(); ) {
 
             NinjaTurtle turtle = (NinjaTurtle) iterator.next();
 
@@ -257,7 +261,7 @@ public class Main {
     private static void testPrototype() {
         out.println("---- Testing Prototype Pattern ----");
 
-        Icecream icecream = new Icecream( 2.2f, "Strawberry");
+        Icecream icecream = new Icecream(2.2f, "Strawberry");
         Icecream clone = (Icecream) icecream.getClone();
 
         icecream.setPrice(1.2f);
@@ -272,12 +276,12 @@ public class Main {
         out.println("---- Testing Filter Pattern ----");
 
         List<Animal> animals = Arrays.asList(
-                new Animal("Lion","Carnivore","Vertebrate"),
-                new Animal("Jellyfish","Carnivore","Ivertebrate"),
-                new Animal("Horse","Herbivore","Vertebrate"),
-                new Animal("Spider","Carnivore","Ivertebrate"),
-                new Animal("Elephant","Herbivore","Vertebrate"),
-                new Animal("Snail","Herbivore","Ivertebrate")
+                new Animal("Lion", "Carnivore", "Vertebrate"),
+                new Animal("Jellyfish", "Carnivore", "Ivertebrate"),
+                new Animal("Horse", "Herbivore", "Vertebrate"),
+                new Animal("Spider", "Carnivore", "Ivertebrate"),
+                new Animal("Elephant", "Herbivore", "Vertebrate"),
+                new Animal("Snail", "Herbivore", "Ivertebrate")
         );
 
         Criteria carnivoreCriteria = new CarnivoreCriteria();
@@ -286,11 +290,11 @@ public class Main {
         Criteria carnivoreAndVertebrate = new AndCriteria(carnivoreCriteria, vertebrateCriteria);
         Criteria orCriteria = new OrCriteria(herbivoreCriteria, vertebrateCriteria);
 
-        System.out.print("Herbivores: " );
+        System.out.print("Herbivores: ");
         System.out.print(herbivoreCriteria.meetCriteria(animals).stream().map(Animal::getName).collect(Collectors.joining(", ")));
         System.out.println();
 
-        System.out.print("Vertebrate carnivors: " );
+        System.out.print("Vertebrate carnivors: ");
         System.out.print(carnivoreAndVertebrate.meetCriteria(animals).stream().map(Animal::getName).collect(Collectors.joining(", ")));
         System.out.println();
 
@@ -311,5 +315,14 @@ public class Main {
         out.println();
     }
 
+
+    private static void testFlyweight() {
+        out.println("---- Testing Flyweight Pattern ----");
+
+        Jewelry jewelry = new Jewelry();
+        jewelry.enumerateGems();
+
+        out.println();
+    }
 
 }
