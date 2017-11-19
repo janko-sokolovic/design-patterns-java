@@ -357,7 +357,7 @@ public class Main {
         String contextPlus = "3 + 5";
         String contextMinus = "3 - 5";
 
-        // ..  check if + or -
+        // ..  check if + or - in some way
 
         try {
             System.out.println("Expression " + contextPlus + " yields: " + new PlusExpression().interpret(contextPlus));
