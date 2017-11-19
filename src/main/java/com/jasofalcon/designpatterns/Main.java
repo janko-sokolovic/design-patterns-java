@@ -22,6 +22,9 @@ import com.jasofalcon.designpatterns.interpreter.PlusExpression;
 import com.jasofalcon.designpatterns.iterator.Iterator;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
+import com.jasofalcon.designpatterns.mediator.Mediator;
+import com.jasofalcon.designpatterns.mediator.User;
+import com.jasofalcon.designpatterns.mediator.WhatsAppGroupChat;
 import com.jasofalcon.designpatterns.observer.AppNotificationObserver;
 import com.jasofalcon.designpatterns.observer.Blog;
 import com.jasofalcon.designpatterns.observer.EmailObserver;
@@ -83,6 +86,8 @@ public class Main {
         testChainOfResponsibility();
 
         testInterpreter();
+
+        testMediator();
     }
 
     private static void testVisitor() {
@@ -369,4 +374,22 @@ public class Main {
         out.println();
     }
 
+    private static void testMediator() {
+        out.println("---- Testing Mediator Pattern ----");
+
+        Mediator chatRoom = new WhatsAppGroupChat();
+        User tesla = new User("Nikola", chatRoom);
+        User edison = new User("Thomas", chatRoom);
+        User einstein = new User("Albert", chatRoom);
+
+        chatRoom.addUser(tesla);
+        chatRoom.addUser(edison);
+        chatRoom.addUser(einstein);
+
+        tesla.sendMessage("AC is the best!");
+        edison.sendMessage("I think DC is!");
+        einstein.sendMessage("It is relative..");
+
+        out.println();
+    }
 }
