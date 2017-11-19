@@ -17,6 +17,8 @@ import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
 import com.jasofalcon.designpatterns.filter.*;
 import com.jasofalcon.designpatterns.flyweight.Jewelry;
+import com.jasofalcon.designpatterns.interpreter.MinusExpression;
+import com.jasofalcon.designpatterns.interpreter.PlusExpression;
 import com.jasofalcon.designpatterns.iterator.Iterator;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
@@ -79,6 +81,8 @@ public class Main {
         testFlyweight();
 
         testChainOfResponsibility();
+
+        testInterpreter();
     }
 
     private static void testVisitor() {
@@ -342,6 +346,25 @@ public class Main {
         chain.dispatchCall(internationalCall);
         chain.dispatchCall(interCountryCall);
         chain.dispatchCall(interCityCall);
+
+        out.println();
+    }
+
+
+    private static void testInterpreter() {
+        out.println("---- Testing Interpreter Pattern ----");
+
+        String contextPlus = "3 + 5";
+        String contextMinus = "3 - 5";
+
+        // ..  check if + or -
+
+        try {
+            System.out.println("Expression " + contextPlus + " yields: " + new PlusExpression().interpret(contextPlus));
+            System.out.println("Expression " + contextMinus + " yields: " + new MinusExpression().interpret(contextPlus));
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
 
         out.println();
     }
