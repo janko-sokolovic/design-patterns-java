@@ -1,6 +1,6 @@
 package com.jasofalcon.designpatterns.observer;
 
-public class AppNotificationObserver  extends Observer{
+public class AppNotificationObserver extends Observer {
 
     public AppNotificationObserver(Blog blog) {
         this.blog = blog;

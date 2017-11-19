@@ -1,6 +1,6 @@
 package com.jasofalcon.designpatterns.strategy;
 
-public class SendEmailMessageStrategy implements SendMessageStrategy{
+public class SendEmailMessageStrategy implements SendMessageStrategy {
 
     @Override
     public void sendMessage(String message) {

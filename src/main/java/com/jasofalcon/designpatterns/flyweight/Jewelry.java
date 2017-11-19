@@ -8,7 +8,7 @@ public class Jewelry {
 
     private List<Gem> gemList;
 
-    public Jewelry(){
+    public Jewelry() {
         gemList = new ArrayList<>();
 
         addGems();
@@ -33,7 +33,7 @@ public class Jewelry {
         return Collections.unmodifiableList(gemList);
     }
 
-    public void enumerateGems(){
+    public void enumerateGems() {
         gemList.forEach(Gem::glow);
     }
 }

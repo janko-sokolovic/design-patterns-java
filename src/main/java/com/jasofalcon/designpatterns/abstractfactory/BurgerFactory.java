@@ -3,9 +3,9 @@ package com.jasofalcon.designpatterns.abstractfactory;
 public class BurgerFactory extends FastFoodAbstractFactory {
     @Override
     public Burger getBurger(String burger) {
-        if("VEGGIE".equalsIgnoreCase(burger)){
+        if ("VEGGIE".equalsIgnoreCase(burger)) {
             return new VeggieBurger();
-        } else if ("BEEF".equalsIgnoreCase(burger)){
+        } else if ("BEEF".equalsIgnoreCase(burger)) {
             return new BeefBurger();
         }
         return null;

@@ -2,9 +2,8 @@ package com.jasofalcon.designpatterns.prototype;
 
 public class Icecream implements Prototype {
 
-    public float getPrice() {
-        return price;
-    }
+    private float price;
+    private String flavor;
 
     public Icecream() {
     }
@@ -12,6 +11,10 @@ public class Icecream implements Prototype {
     public Icecream(float price, String flavor) {
         this.price = price;
         this.flavor = flavor;
+    }
+
+    public float getPrice() {
+        return price;
     }
 
     public void setPrice(float price) {
@@ -25,10 +28,6 @@ public class Icecream implements Prototype {
     public void setFlavor(String flavor) {
         this.flavor = flavor;
     }
-
-    private float price;
-    private String flavor;
-
 
     @Override
     public Prototype getClone() {

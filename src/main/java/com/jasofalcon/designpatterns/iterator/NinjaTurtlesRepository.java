@@ -7,7 +7,7 @@ public class NinjaTurtlesRepository implements Container {
 
     private List<NinjaTurtle> turtles = Arrays.asList(
             new NinjaTurtle("Leonardo", "Blue", "Twin Katana"),
-            new NinjaTurtle("Rafaello", "Red","Sai"),
+            new NinjaTurtle("Rafaello", "Red", "Sai"),
             new NinjaTurtle("Donatello", "Purple", "Bo"),
             new NinjaTurtle("Michelangelo", "Orange", "Nunchaku")
     );
@@ -20,6 +20,7 @@ public class NinjaTurtlesRepository implements Container {
     private class NinjaTurtleIterator implements Iterator {
 
         int index;
+
         @Override
         public boolean hasNext() {
             return turtles.size() > index;
@@ -27,10 +28,10 @@ public class NinjaTurtlesRepository implements Container {
 
         @Override
         public Object next() {
-            if(hasNext()){
+            if (hasNext()) {
                 return turtles.get(index++);
             }
-            return  null;
+            return null;
         }
     }
 

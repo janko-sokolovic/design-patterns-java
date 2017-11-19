@@ -3,7 +3,9 @@ package com.jasofalcon.designpatterns.factory;
 public abstract class Car {
 
     abstract String getBrand();
+
     abstract String getModel();
+
     abstract int getHorsePower();
 
     @Override

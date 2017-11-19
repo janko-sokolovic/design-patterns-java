@@ -7,7 +7,7 @@ public class OrCriteria implements Criteria {
     private final Criteria criteria;
     private final Criteria otherCriteria;
 
-    public  OrCriteria(Criteria criteria, Criteria otherCriteria){
+    public OrCriteria(Criteria criteria, Criteria otherCriteria) {
         this.criteria = criteria;
         this.otherCriteria = otherCriteria;
     }

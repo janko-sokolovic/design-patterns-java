@@ -4,9 +4,10 @@ public class EagerInitializedSingleton {
 
     private static final EagerInitializedSingleton instance = new EagerInitializedSingleton();
 
-    private EagerInitializedSingleton(){}
+    private EagerInitializedSingleton() {
+    }
 
-    public EagerInitializedSingleton getInstance(){
+    public EagerInitializedSingleton getInstance() {
         return instance;
     }
 }

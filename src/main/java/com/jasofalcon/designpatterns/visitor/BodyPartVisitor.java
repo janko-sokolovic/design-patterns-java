@@ -1,6 +1,6 @@
 package com.jasofalcon.designpatterns.visitor;
 
-public interface BodyPartVisitor{
+public interface BodyPartVisitor {
     void visit(Heart heart);
 
     void visit(Lungs lungs);

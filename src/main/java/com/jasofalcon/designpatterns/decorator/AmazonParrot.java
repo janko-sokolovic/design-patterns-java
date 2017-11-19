@@ -2,7 +2,7 @@ package com.jasofalcon.designpatterns.decorator;
 
 public class AmazonParrot extends BirdDecorator {
 
-    public AmazonParrot(Bird bird){
+    public AmazonParrot(Bird bird) {
         super(bird);
     }
 

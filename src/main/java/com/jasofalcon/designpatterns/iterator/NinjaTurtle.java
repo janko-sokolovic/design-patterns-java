@@ -5,7 +5,7 @@ public class NinjaTurtle {
     private String color;
     private String weapon;
 
-    NinjaTurtle(String name, String color, String weapon){
+    NinjaTurtle(String name, String color, String weapon) {
         this.name = name;
         this.color = color;
         this.weapon = weapon;
@@ -15,11 +15,11 @@ public class NinjaTurtle {
         return name;
     }
 
-    public String getColor(){
+    public String getColor() {
         return color;
     }
 
-    public String getWeapon(){
+    public String getWeapon() {
         return weapon;
     }
 }

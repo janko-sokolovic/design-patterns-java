@@ -9,7 +9,8 @@ public class LazyInitializedSingleton {
 
     private String name;
 
-    private LazyInitializedSingleton() {}
+    private LazyInitializedSingleton() {
+    }
 
     public static LazyInitializedSingleton getInstance() {
         if (null == instance) {

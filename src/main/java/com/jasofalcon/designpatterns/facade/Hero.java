@@ -9,7 +9,7 @@ public class Hero {
         this.shield = new MagmaShield();
     }
 
-    public void attack(){
+    public void attack() {
         sword.prepare();
         shield.shieldUp();
         sword.strike();
@@ -17,11 +17,11 @@ public class Hero {
         warCry();
     }
 
-    private void run(){
+    private void run() {
         System.out.println("*Start running..*");
     }
 
-    private void warCry(){
+    private void warCry() {
         System.out.println("For the king!");
     }
 

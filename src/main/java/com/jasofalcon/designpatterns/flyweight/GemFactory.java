@@ -1,10 +1,9 @@
 package com.jasofalcon.designpatterns.flyweight;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
-public class GemFactory {
+class GemFactory {
     private final Map<GemType, Gem> gems;
 
     GemFactory() {

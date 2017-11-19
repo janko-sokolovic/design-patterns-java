@@ -1,13 +1,12 @@
 package com.jasofalcon.designpatterns;
 
-import static java.lang.System.out;
-
 import com.jasofalcon.designpatterns.abstractfactory.Burger;
 import com.jasofalcon.designpatterns.abstractfactory.FastFoodAbstractFactory;
 import com.jasofalcon.designpatterns.abstractfactory.FastFoodFactoryProvider;
 import com.jasofalcon.designpatterns.abstractfactory.Pizza;
 import com.jasofalcon.designpatterns.bridge.*;
 import com.jasofalcon.designpatterns.builder.House;
+import com.jasofalcon.designpatterns.chainofresponsibility.*;
 import com.jasofalcon.designpatterns.command.*;
 import com.jasofalcon.designpatterns.composite.Employee;
 import com.jasofalcon.designpatterns.decorator.AmazonParrot;
@@ -17,7 +16,6 @@ import com.jasofalcon.designpatterns.facade.Hero;
 import com.jasofalcon.designpatterns.factory.Car;
 import com.jasofalcon.designpatterns.factory.CarFactory;
 import com.jasofalcon.designpatterns.filter.*;
-import com.jasofalcon.designpatterns.flyweight.GemFactory;
 import com.jasofalcon.designpatterns.flyweight.Jewelry;
 import com.jasofalcon.designpatterns.iterator.Iterator;
 import com.jasofalcon.designpatterns.iterator.NinjaTurtle;
@@ -39,6 +37,8 @@ import com.jasofalcon.designpatterns.visitor.HealthInfoVisitor;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.lang.System.out;
 
 public class Main {
 
@@ -77,6 +77,8 @@ public class Main {
         testComposite();
 
         testFlyweight();
+
+        testChainOfResponsibility();
     }
 
     private static void testVisitor() {
@@ -321,6 +323,25 @@ public class Main {
 
         Jewelry jewelry = new Jewelry();
         jewelry.enumerateGems();
+
+        out.println();
+    }
+
+    private static void testChainOfResponsibility() {
+        out.println("---- Testing Chain of Responsibility Pattern ----");
+
+        CallDispatcher interCityDispatcher = new InterCityDispatcher(null);
+        CallDispatcher interCountryDispatcher = new InterCountryDispatcher(interCityDispatcher);
+
+        CallDispatcher chain = new InternationalCallDispatcher(interCountryDispatcher);
+
+        Call internationalCall = new Call(CallType.INTERNATIONAL, "00381 64 1234 567");
+        Call interCountryCall = new Call(CallType.INTERCOUNTRY, "011 1234 567");
+        Call interCityCall = new Call(CallType.INTERCITY, "1234 567");
+
+        chain.dispatchCall(internationalCall);
+        chain.dispatchCall(interCountryCall);
+        chain.dispatchCall(interCityCall);
 
         out.println();
     }
