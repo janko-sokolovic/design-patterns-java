@@ -37,6 +37,9 @@ import com.jasofalcon.designpatterns.strategy.Context;
 import com.jasofalcon.designpatterns.strategy.SendEmailMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendLetterMessageStrategy;
 import com.jasofalcon.designpatterns.strategy.SendMessageStrategy;
+import com.jasofalcon.designpatterns.template.Dinner;
+import com.jasofalcon.designpatterns.template.PizzaDinner;
+import com.jasofalcon.designpatterns.template.SpagettiDinner;
 import com.jasofalcon.designpatterns.visitor.Body;
 import com.jasofalcon.designpatterns.visitor.BodyPart;
 import com.jasofalcon.designpatterns.visitor.HealthInfoVisitor;
@@ -92,6 +95,8 @@ public class Main {
         testMediator();
 
         testMemento();
+
+        testTemplate();
     }
 
     private static void testVisitor() {
@@ -416,6 +421,20 @@ public class Main {
         timeTraveller.travelBackToMoment(careTaker.getLifeMoment(0));
         System.out.println(timeTraveller.getCurrentState());
 
+
+        out.println();
+    }
+
+    private static void testTemplate() {
+        out.println("---- Testing Template Pattern ----");
+
+        Dinner dinner = new PizzaDinner();
+        dinner.makeDinner();
+        
+        System.out.println();
+
+        dinner = new SpagettiDinner();
+        dinner.makeDinner();
 
         out.println();
     }
