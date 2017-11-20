@@ -25,6 +25,8 @@ import com.jasofalcon.designpatterns.iterator.NinjaTurtlesRepository;
 import com.jasofalcon.designpatterns.mediator.Mediator;
 import com.jasofalcon.designpatterns.mediator.User;
 import com.jasofalcon.designpatterns.mediator.WhatsAppGroupChat;
+import com.jasofalcon.designpatterns.memento.LifeMomentsCareTaker;
+import com.jasofalcon.designpatterns.memento.TimeTraveller;
 import com.jasofalcon.designpatterns.observer.AppNotificationObserver;
 import com.jasofalcon.designpatterns.observer.Blog;
 import com.jasofalcon.designpatterns.observer.EmailObserver;
@@ -88,6 +90,8 @@ public class Main {
         testInterpreter();
 
         testMediator();
+
+        testMemento();
     }
 
     private static void testVisitor() {
@@ -392,4 +396,28 @@ public class Main {
 
         out.println();
     }
+
+    private static void testMemento() {
+        out.println("---- Testing Memento Pattern ----");
+
+        TimeTraveller timeTraveller = new TimeTraveller("Life begins..");
+        LifeMomentsCareTaker careTaker = new LifeMomentsCareTaker();
+
+        timeTraveller.timePasses("Year is 1.1.2042. Everything is fine..");
+        careTaker.add(timeTraveller.saveMoment());
+        System.out.println(timeTraveller.getCurrentState());
+
+        timeTraveller.timePasses("Year is 15.2.2045. Bad things happen..");
+        careTaker.add(timeTraveller.saveMoment());
+
+        System.out.println(timeTraveller.getCurrentState());
+        // Regrets..
+
+        timeTraveller.travelBackToMoment(careTaker.getLifeMoment(0));
+        System.out.println(timeTraveller.getCurrentState());
+
+
+        out.println();
+    }
+
 }
