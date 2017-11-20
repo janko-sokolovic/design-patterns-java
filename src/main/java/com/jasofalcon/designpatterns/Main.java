@@ -45,7 +45,12 @@ import com.jasofalcon.designpatterns.behavioral.template.SpagettiDinner;
 import com.jasofalcon.designpatterns.behavioral.visitor.Body;
 import com.jasofalcon.designpatterns.behavioral.visitor.BodyPart;
 import com.jasofalcon.designpatterns.behavioral.visitor.HealthInfoVisitor;
+import com.jasofalcon.designpatterns.structural.proxy.AltarOfElders;
+import com.jasofalcon.designpatterns.structural.proxy.AltarOfEldersProxy;
+import com.jasofalcon.designpatterns.structural.proxy.AltarOfHeroes;
+import com.jasofalcon.designpatterns.structural.proxy.ElfHero;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -101,6 +106,8 @@ public class Main {
         testTemplate();
 
         testAdapter();
+
+        testProxy();
     }
 
     private static void testVisitor() {
@@ -449,6 +456,20 @@ public class Main {
         Fighter fighter = new Fighter(new BoxerAdapter());
         // Kickboxer can now box also
         fighter.kickBox();
+
+        out.println();
+    }
+
+    private static void testProxy() {
+        out.println("---- Testing Proxy Pattern ----");
+        List<ElfHero> myHeroes = new ArrayList<>();
+
+        AltarOfHeroes altarOfElders = new AltarOfEldersProxy(new AltarOfElders());
+        myHeroes.add(altarOfElders.createHero("Warden"));
+        myHeroes.add(altarOfElders.createHero("Keeper of the Grove"));
+        myHeroes.add(altarOfElders.createHero("Demon Hunter"));
+
+        myHeroes.add(altarOfElders.createHero("Priestess of the Moon"));
 
         out.println();
     }
