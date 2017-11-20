@@ -4,6 +4,8 @@ import com.jasofalcon.designpatterns.creational.abstractfactory.Burger;
 import com.jasofalcon.designpatterns.creational.abstractfactory.FastFoodAbstractFactory;
 import com.jasofalcon.designpatterns.creational.abstractfactory.FastFoodFactoryProvider;
 import com.jasofalcon.designpatterns.creational.abstractfactory.Pizza;
+import com.jasofalcon.designpatterns.structural.adapter.BoxerAdapter;
+import com.jasofalcon.designpatterns.structural.adapter.Fighter;
 import com.jasofalcon.designpatterns.structural.bridge.*;
 import com.jasofalcon.designpatterns.creational.builder.House;
 import com.jasofalcon.designpatterns.behavioral.chainofresponsibility.*;
@@ -97,6 +99,8 @@ public class Main {
         testMemento();
 
         testTemplate();
+
+        testAdapter();
     }
 
     private static void testVisitor() {
@@ -435,6 +439,16 @@ public class Main {
 
         dinner = new SpagettiDinner();
         dinner.makeDinner();
+
+        out.println();
+    }
+
+    private static void testAdapter() {
+        out.println("---- Testing Adapter Pattern ----");
+
+        Fighter fighter = new Fighter(new BoxerAdapter());
+        // Kickboxer can now box also
+        fighter.kickBox();
 
         out.println();
     }
